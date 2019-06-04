@@ -25,6 +25,9 @@
 // USART1
 #define MICROPY_HW_UART1_TX     (pin_A9)   // PA9,PB6
 #define MICROPY_HW_UART1_RX     (pin_A10)  // PA10,PB7
+// PA11 usart1_cts
+// PA12 usart1_rts
+// PA8  usart1_ck
 
 // USART2
 #define MICROPY_HW_UART2_TX     (pin_A2)  // PA2,PD5
@@ -37,89 +40,66 @@
 #define MICROPY_HW_UART3_RX     (pin_D9)  // PB11,PC11,PD9
 #define MICROPY_HW_UART3_RTS    (pin_D12) // PB14,PD12
 #define MICROPY_HW_UART3_CTS    (pin_D11) // PB13,PD11
+// D10 usart3_ck  C12
 
 // UART4
-#define MICROPY_HW_UART4_TX     (pin_C10)  // PC10,PA0
-#define MICROPY_HW_UART4_RX     (pin_C11)  // PC11,PA1
+#define MICROPY_HW_UART4_TX     (pin_C10)  // PC10
+#define MICROPY_HW_UART4_RX     (pin_C11)  // PC11
 
 // UART5
 #define MICROPY_HW_UART5_TX     (pin_C12) // PC12
 #define MICROPY_HW_UART5_RX     (pin_D2)  // PD2
 
-// USART6
-// #define MICROPY_HW_UART6_TX     (pin_C6) // PC6,PG14
-// #define MICROPY_HW_UART6_RX     (pin_C7) // PC7,PG9
-// #define MICROPY_HW_UART6_RTS    (pin_G8) // PG8,G12
-// #define MICROPY_HW_UART6_CTS    (pin_G13) // PG15,PG13
-
-// UART7
-// #define MICROPY_HW_UART7_TX     (pin_E8) // PE8,PF7
-// #define MICROPY_HW_UART7_RX     (pin_E7) // PE7,PF6
-
-// UART8
-// #define MICROPY_HW_UART8_TX     (pin_E1) // PE1
-// #define MICROPY_HW_UART8_RX     (pin_E0) // PE0
-
 // I2C busses
 #define MICROPY_HW_I2C1_SCL (pin_B6)  // PB8,PB6
 #define MICROPY_HW_I2C1_SDA (pin_B7)  // PB9,PB7
 
-#define MICROPY_HW_I2C2_SCL (pin_B10) // PB10,PF1
-#define MICROPY_HW_I2C2_SDA (pin_B11) // PB11,PF0
-
-#define MICROPY_HW_I2C3_SCL (pin_A8)  // PA8
-#define MICROPY_HW_I2C3_SDA (pin_C9)  // PC9
+#define MICROPY_HW_I2C2_SCL (pin_B10) // PB10
+#define MICROPY_HW_I2C2_SDA (pin_B11) // PB11
 
 // I2S busses
-// I2S2_CKIN   PC9
+// I2S2_CK  PB13
+// I2S2_MCK PC6
+// I2S2_WS  PB12
 
-// I2S2_CK     PB13,PB10
-// I2S2_MCK    PC6
-// I2S2_SD     PB15,PC3
-// I2S2_WS     PB12,PB9
-// I2S2ext_SD  PB14,PC2
-
-// I2S3_CK     PB3,PC10
-// I2S3_MCK    PC7
-// I2S3_SD     PB5,PC12
-// I2S3_WS     PA15,PA4
-// I2S3ext_SD  PB4,PC11
+// I2S3_CK  PB3
+// I2S3_MCK PC7
+// I2S3_SD  PB5
+// I2S3_WS  PA15
 
 // SPI busses
-#define MICROPY_HW_SPI1_NSS  (pin_A4)  // PA4,PA15
+#define MICROPY_HW_SPI1_NSS  (pin_A4)  // PA4
 #define MICROPY_HW_SPI1_SCK  (pin_A5)  // PA5,PB3
 #define MICROPY_HW_SPI1_MISO (pin_A6)  // PA6,PB4
 #define MICROPY_HW_SPI1_MOSI (pin_A7)  // PA7,PB5
 
-#define MICROPY_HW_SPI2_NSS  (pin_B12) // PB12,PB9
-#define MICROPY_HW_SPI2_SCK  (pin_B13) // PB13,PB10
-#define MICROPY_HW_SPI2_MISO (pin_B14) // PB14,PC2
-#define MICROPY_HW_SPI2_MOSI (pin_B15) // PB15,PC3
+#define MICROPY_HW_SPI2_NSS  (pin_B12) // PB12
+#define MICROPY_HW_SPI2_SCK  (pin_B13) // PB13
+#define MICROPY_HW_SPI2_MISO (pin_B14) // PB14
+#define MICROPY_HW_SPI2_MOSI (pin_B15) // PB15
 
 #define MICROPY_HW_SPI3_NSS  (pin_A15) // PA15
-#define MICROPY_HW_SPI3_SCK  (pin_B3)  // PB3,PC10
-#define MICROPY_HW_SPI3_MISO (pin_B4)  // PB4,PC11
-#define MICROPY_HW_SPI3_MOSI (pin_B5)  // PB5,PC12
+#define MICROPY_HW_SPI3_SCK  (pin_B3)  // PB3
+#define MICROPY_HW_SPI3_MISO (pin_B4)  // PB4
+#define MICROPY_HW_SPI3_MOSI (pin_B5)  // PB5
 
 // CAN busses
 #define MICROPY_HW_CAN1_TX (pin_B9) // PB9,PD1,PA12
 #define MICROPY_HW_CAN1_RX (pin_B8) // PB8,PD0,PA11
-#define MICROPY_HW_CAN2_TX (pin_B6) // PB6,PB13
-#define MICROPY_HW_CAN2_RX (pin_B5) // PB5,PB12
 
 // DAC
 // DAC_OUT1 PA4
 // DAC_OUT2 PA5
 
-// KEY0 has no pullup or pulldown, and pressing the switch makes the input go low
-#define MICROPY_HW_USRSW_PIN        (pin_E4)
-#define MICROPY_HW_USRSW_PULL       (GPIO_PULLUP)
-#define MICROPY_HW_USRSW_EXTI_MODE  (GPIO_MODE_IT_FALLING)
+// KEY0 has no pullup or pulldown; Pressing the button makes the input go high.
+#define MICROPY_HW_USRSW_PIN        (pin_A0)
+#define MICROPY_HW_USRSW_PULL       (GPIO_PULLDOWN)
+#define MICROPY_HW_USRSW_EXTI_MODE  (GPIO_MODE_IT_RISING)
 #define MICROPY_HW_USRSW_PRESSED    (0)
 
 // LEDs
-#define MICROPY_HW_LED1             (pin_F9)  // Red LED D2
-// Red LED D1 is the power LED and always on
+// LED D1 is the power LED and always on
+#define MICROPY_HW_LED1             (pin_A1)  // LED D2
 #define MICROPY_HW_LED_ON(pin)      (mp_hal_pin_low(pin))
 #define MICROPY_HW_LED_OFF(pin)     (mp_hal_pin_high(pin))
 

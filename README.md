@@ -37,8 +37,8 @@ screen /dev/tty.usbmodem1422
 
 ### Exposed Port Pins
 
-* PA0-PA12, PA15
-* PB0-PB1, PB3, PB5-PB15
+* PA0-PA15
+* PB0-PB3, PB5-PB15
 * PC0-PC13
 * PD0-PD15
 * PE0-PE15
@@ -67,18 +67,86 @@ screen /dev/tty.usbmodem1422
 * AMS1117-3.3V: 3.3V LDO voltage regulator, max current 800mA
 * Micro USB for power and comms
 * Power LED D1
-* User LED D2 (PA6) active low
+* User LED D2 (PA1) active low
 * Reset button, 1x user buttons K0
-* 2x22 side pins
-* TFT/OLED socket
+* 2x22 side header
+* SPI TFT/OLED header (3V3, GND, MOSI, SCK, CS, MISO, RST, BL)
+* RTC battery header B1 beside SD card
 * M3 mounting holes
 * Dimensions: 40.89mm x 68.59mm
+
+### Peripherals
+
+#### TFT/OLED (J4)
+
+* 1 3V3
+* 2 GND
+* 3 PB15 MOSI
+* 4 PB13 SCK
+* 5 PB12 CS
+* 6 PB14 MISO
+* 7 PC5 RS
+* 8 PB1 BLK
+
+#### SPI Flash W25Q16 (U3)
+
+* 1 PA15 F_CS
+* 2 PB4 SPI1_MISO
+* 3 WP 3V3
+* 4 GND
+* 5 PB5 SPI1_MOSI
+* 6 PB3 SPI1_SCK
+* 7 HOLD 3V3
+* 8 VCC 3V3
+
+#### SWD debug (J1)
+
+* 1 Boot0
+* 2 3V3
+* 3 GND
+* 4 PA13 SWDIO
+* 5 PA14 SWCLK
+
+#### USB (J5)
+
+* 1 VCC 5V
+* 2 PA11 USB_DM
+* 3 PA12 USB_DP
+* 4 NC ID
+* 5 GND
+
+#### Mini SD (U5)
+
+* 1 PC10 SDIO_D2
+* 2 PC11 SDIO_D3
+* 3 PD2 SDIO_CMD
+* 4 VCC
+* 5 PC12 SDIO_SCK
+* 6 GND
+* 7 PC8 SDIO_D0
+* 8 PC9 SDIO_D1
+* 9 NC SD_NC
+
+#### User Button (K1)
+
+* PA0 WK_UP
+
+#### User LED (D2)
+
+* PA1
+
+#### Battery (B1)
+
+* 1 BAT54C
+* 2 GND
 
 ### Links:
 
 * [STM32F407VG on st.com](https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-high-performance-mcus/stm32f4-series/stm32f407-417/stm32f407vg.html)
 * [Buy on Taobao](https://item.taobao.com/item.htm?id=582677940441)
 * [Buy on AliExpress](https://www.aliexpress.com/item/32985219862.html)
+* [STM32F407VGT6 schematics](https://github.com/mcauser/MCUDEV_DEVEBOX_F407VGT6/blob/master/docs/STM32F407VX_M_schematics.pdf)
+* [VET6 version](https://github.com/mcauser/MCUDEV_DEVEBOX_F407VET6)
 
 ## License
 
