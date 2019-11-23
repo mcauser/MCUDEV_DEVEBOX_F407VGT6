@@ -1,5 +1,10 @@
 #define MICROPY_HW_BOARD_NAME       "MCUDEV DEVEBOX STM32F407VG"
 #define MICROPY_HW_MCU_NAME         "STM32F407VG"
+#define MICROPY_HW_FLASH_FS_LABEL   "DEVEBOXF407VG"
+
+// 1 = use internal flash (1 MByte)
+// 0 = use onboard SPI flash (2 MByte) Winbond W25Q16
+#define MICROPY_HW_ENABLE_INTERNAL_FLASH_STORAGE (1)
 
 #define MICROPY_HW_HAS_SWITCH       (1)		// has 1 button KEY0
 #define MICROPY_HW_HAS_FLASH        (1)
@@ -100,6 +105,31 @@
 #define MICROPY_HW_LED1             (pin_A1)  // LED D2
 #define MICROPY_HW_LED_ON(pin)      (mp_hal_pin_low(pin))
 #define MICROPY_HW_LED_OFF(pin)     (mp_hal_pin_high(pin))
+
+// If using onboard SPI flash
+#if !MICROPY_HW_ENABLE_INTERNAL_FLASH_STORAGE
+
+// Winbond W25Q16 SPI Flash = 16 Mbit (2 MByte)
+#define MICROPY_HW_SPIFLASH_SIZE_BITS (16 * 1024 * 1024)
+#define MICROPY_HW_SPIFLASH_CS      (pin_A15)
+#define MICROPY_HW_SPIFLASH_SCK     (pin_B3)
+#define MICROPY_HW_SPIFLASH_MISO    (pin_B4)
+#define MICROPY_HW_SPIFLASH_MOSI    (pin_B5)
+
+#define MICROPY_BOARD_EARLY_INIT    Mcudev_Devebox_F407VG_board_early_init
+void Mcudev_Devebox_F407VG_board_early_init(void);
+
+extern const struct _mp_spiflash_config_t spiflash_config;
+extern struct _spi_bdev_t spi_bdev;
+#define MICROPY_HW_BDEV_IOCTL(op, arg) ( \
+    (op) == BDEV_IOCTL_NUM_BLOCKS ? (MICROPY_HW_SPIFLASH_SIZE_BITS / 8 / FLASH_BLOCK_SIZE) : \
+    (op) == BDEV_IOCTL_INIT ? spi_bdev_ioctl(&spi_bdev, (op), (uint32_t)&spiflash_config) : \
+    spi_bdev_ioctl(&spi_bdev, (op), (arg)) \
+)
+#define MICROPY_HW_BDEV_READBLOCKS(dest, bl, n) spi_bdev_readblocks(&spi_bdev, (dest), (bl), (n))
+#define MICROPY_HW_BDEV_WRITEBLOCKS(src, bl, n) spi_bdev_writeblocks(&spi_bdev, (src), (bl), (n))
+
+#endif
 
 // SD card detect switch
 //	#define MICROPY_HW_SDCARD_DETECT_PIN        (pin_A8)	// nope

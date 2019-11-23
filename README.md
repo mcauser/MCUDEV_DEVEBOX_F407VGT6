@@ -130,12 +130,12 @@ screen /dev/ttyACM0 115200
 * 4 NC ID
 * 5 GND
 
-#### Mini SD (U5)
+#### Micro SD (U5)
 
 * 1 PC10 SDIO_D2
 * 2 PC11 SDIO_D3
 * 3 PD2 SDIO_CMD
-* 4 VCC
+* 4 3V3
 * 5 PC12 SDIO_SCK
 * 6 GND
 * 7 PC8 SDIO_D0
